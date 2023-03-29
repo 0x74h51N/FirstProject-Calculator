@@ -160,7 +160,6 @@ namespace WinFormsApp6
                     textBox3.Text = Convert.ToString(oncekiSonuc) + " " + op + " " + Convert.ToString(ikinciDeger) + " =";
                     textBox1.Text = Convert.ToString(sonuc);
                 }
-                
             }
             else
             {
