@@ -137,6 +137,7 @@ namespace WinFormsApp6
                     sonuc = Math.Pow(oncekiSonuc, ikinciDouble);
                     break;
             }
+            oncekiSonuc = sonuc;
         }
         private void esittir_(char x)
         {
