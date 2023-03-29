@@ -1,10 +1,12 @@
 # FirstProject-Calculator
 [En]
+
 I also made my first project as a calculator, just like everyone else. 
 As I learned C#, I tried to bring the calculator to life through WindowsForm to make it a usable and functional application. Of course, it has many shortcomings, for example, I couldn't give number format to the textbox (whenever I try to give it with parse, the decimal separator disappears :S) or I don't know how to make the application resizable correctly. 
 But at least, I think I managed to make a simple calculator that works properly :).
 
 [Tr]
+
 Herkes gibi ilk projemi ben de bir hesap makinası olarak yaptım. 
 C#'ı öğrendikçe, hesap makinasını kullanılabilir ve işe yarar bir uygulama olması için WindowsForm üzerinden hayat vermeye çalıştım. Tabii ki bir çok eksiği var, örneğin textbox'a number format veremedim (ne zaman parse ile vermeyi denesem bu sefer ondalık ayıraç kullanılmaz oluyor :S) ya da uygulamanın boyutunu doğru bir şekilde değiştirilebilir yapmayı bilmiyorum. Ama en azından sağlıklı bir şekilde çalışan bir basit hesap makinası yapmayı başardım sanırım :).
 
