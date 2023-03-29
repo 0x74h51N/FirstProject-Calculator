@@ -16,6 +16,7 @@ namespace WinFormsApp6
         public bool ikinciIslem { get; set; }
         public bool temiz { get; set; } 
         public bool tussuz { get; set; }
+        public bool esittir { get; set; }
         #endregion
         public Form1()
         {
@@ -114,6 +115,7 @@ namespace WinFormsApp6
                     sonuc = Math.Pow(ilkDouble, ikinciDouble);
                     break;
             }
+            oncekiSonuc = sonuc;
         }
         private void sec2 (char x)
         {
@@ -136,60 +138,48 @@ namespace WinFormsApp6
                     break;
             }
         }
-        private void esittir(char x)
+        private void esittir_(char x)
         {
             op = x;
-            if (ikinciDouble == 0 && ilkDeger != null)
+            ikinciDeger = textBox1.Text;
+            ilkDouble = Convert.ToDouble(ilkDeger);
+            ikinciDouble = Convert.ToDouble(ikinciDeger);
+            textBox1.Clear();
+            if (esittir == true)
             {
-                ikinciDeger = textBox1.Text;
-                ilkDouble = Convert.ToDouble(ilkDeger);
-                ikinciDouble = Convert.ToDouble(ikinciDeger);
-                textBox1.Clear();
-                sec1 (x);
-                textBox1.Text = Convert.ToString(sonuc);
-                textBox3.Text = ilkDeger + " " + x + " " + ikinciDeger + " =";
-                oncekiSonuc = sonuc;
+                if (ikinciIslem == false)
+                {
+                    sec1(x);
+                    textBox3.Text = ilkDeger + " " + x + " " + ikinciDeger + " =";
+                    textBox1.Text = Convert.ToString(sonuc);
+                    ikinciIslem = true;
+                }
+                else
+                {
+                    sec2(x);
+                    textBox3.Text = Convert.ToString(oncekiSonuc) + " " + op + " " + Convert.ToString(ikinciDeger) + " =";
+                    textBox1.Text = Convert.ToString(sonuc);
+                }
+                
             }
             else
             {
-                sec2(x);
-                textBox1.Text = Convert.ToString(sonuc);
-                textBox3.Text = Convert.ToString(oncekiSonuc) + " " + op + " " + Convert.ToString(ikinciDeger) + " =";
-                oncekiSonuc = sonuc;
-                textBox1.Focus();
-                textBox1.SelectionStart = textBox1.TextLength;
-            }
-        }
-        private void esittir2(char x)
-        {
-            op = x;
-            if (ikinciIslem == false)
-            {
-                ikinciIslem = true;
-                ikinciDeger = textBox1.Text;
-                ilkDouble = Convert.ToDouble(ilkDeger);
-                ikinciDouble = Convert.ToDouble(ikinciDeger);
-                textBox1.Clear();
-                sec1(x);
+                if (ikinciIslem == false)
+                {
+                    ikinciIslem = true;
+                    sec1(x);
+                }
+                else
+                {
+                    sec2(x);
+                    temiz = false;
+                }
+                tussuz = true;
                 textBox1.Text = Convert.ToString(sonuc);
                 textBox3.Text = sonuc + " " + x + " ";
-                oncekiSonuc = sonuc;
-                tussuz = true;
             }
-            else
-            {
-                op = x;
-                ikinciDeger = textBox1.Text;
-                ikinciDouble = Convert.ToDouble(ikinciDeger);
-                sec2(x);
-                textBox1.Text = Convert.ToString(sonuc);
-                textBox3.Text = sonuc + " " + x + " ";
-                oncekiSonuc = sonuc;
-                textBox1.Focus();
-                textBox1.SelectionStart = textBox1.TextLength;
-                temiz = false;
-                tussuz = true;
-            }
+            textBox1.Focus();
+            textBox1.SelectionStart = textBox1.TextLength;
         }
         private void yuzde(char x)
         {
@@ -197,7 +187,7 @@ namespace WinFormsApp6
             if (ikinciDeger != null || ikinciDeger != "0")
             {
                 ikinciDeger = textBox1.Text;
-                if (ilkDeger != null || ilkDeger != "0" || ikinciDeger != null)
+                if (ilkDeger != null || ilkDeger != "0" || ikinciDeger != null || ikinciDeger !="0")
                 {
                     ilkDouble = Convert.ToDouble(ilkDeger);
                     ikinciDouble = Convert.ToDouble(ikinciDeger);
@@ -217,7 +207,7 @@ namespace WinFormsApp6
                             break;
                         case '/':
                             sonuc = (ilkDouble * 100) / ikinciDouble;
-                            textBox3.Text = ilkDeger + "sayısı " + ikinciDeger + " sayısının" + " yüzde";
+                            textBox3.Text = "("+ ilkDeger + " x " + "100)"+" / " + ikinciDeger + "=";
                             textBox1.Text = Convert.ToString(sonuc);
                             break;
                         case 'x':
@@ -296,7 +286,8 @@ namespace WinFormsApp6
         }
         private void esittirTusu_Click(object sender, EventArgs e)
         {
-            esittir(op);
+            esittir = true;
+            esittir_(op);
         }
         private void virgulTusu_Click(object sender, EventArgs e)
         {
@@ -319,6 +310,7 @@ namespace WinFormsApp6
             ikinciIslem = false;
             temiz = false;
             tussuz = false;
+            esittir = false;
         }
         private void ceTusu_Click(object sender, EventArgs e)
         {
@@ -335,7 +327,7 @@ namespace WinFormsApp6
             {
                 aritmatik('+');
             }
-            else if (tussuz == false) { esittir2('+'); }
+            else if (tussuz == false) { esittir_('+'); }
         }
         private void cikarmaTusu_Click(object sender, EventArgs e)
         {
@@ -343,7 +335,7 @@ namespace WinFormsApp6
             {
                 aritmatik('-');
             }
-            else if (tussuz == false) { esittir2('-'); }
+            else if (tussuz == false) { esittir_('-'); }
         }
         private void carpmaTusu_Click(object sender, EventArgs e)
         {
@@ -351,7 +343,7 @@ namespace WinFormsApp6
             {
                 aritmatik('x');
             }
-            else if (tussuz == false) { esittir2('x'); }
+            else if (tussuz == false) { esittir_('x'); }
 
         }
         private void bolmeTusu_Click(object sender, EventArgs e)
@@ -360,7 +352,7 @@ namespace WinFormsApp6
             {
                 aritmatik('/');
             }
-            else if (tussuz == false) { esittir2('/'); }
+            else if (tussuz == false) { esittir_('/'); }
         }
         private void kareKokuTusu_Click(object sender, EventArgs e)
         {
