@@ -13,3 +13,8 @@ C#'ı öğrendikçe, hesap makinasını kullanılabilir ve işe yarar bir uygula
 /Screenshot
 
 ![Calculator](https://user-images.githubusercontent.com/129261873/228528338-84785a0d-4bce-4461-9544-ca91a83ee48d.png)
+
+
+/Demo
+![HesapKitap_eJrzklsSwD](https://user-images.githubusercontent.com/129261873/228601923-61df3b25-c911-410e-89c0-88a876ad4fa3.gif)
+
