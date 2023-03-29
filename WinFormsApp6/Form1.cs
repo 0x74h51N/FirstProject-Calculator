@@ -94,6 +94,48 @@ namespace WinFormsApp6
             textBox1.Focus();
             textBox1.SelectionStart = textBox1.TextLength;
         }
+        private void sec1 (char x)
+        {
+            switch (x)
+            {
+                case '+':
+                    sonuc = ilkDouble + ikinciDouble;
+                    break;
+                case '-':
+                    sonuc = ilkDouble - ikinciDouble;
+                    break;
+                case 'x':
+                    sonuc = ilkDouble * ikinciDouble;
+                    break;
+                case '/':
+                    sonuc = ilkDouble / ikinciDouble;
+                    break;
+                case '^':
+                    sonuc = Math.Pow(ilkDouble, ikinciDouble);
+                    break;
+            }
+        }
+        private void sec2 (char x)
+        {
+            switch (op)
+            {
+                case '+':
+                    sonuc = oncekiSonuc + ikinciDouble;
+                    break;
+                case '-':
+                    sonuc = oncekiSonuc - ikinciDouble;
+                    break;
+                case 'x':
+                    sonuc = oncekiSonuc * ikinciDouble;
+                    break;
+                case '/':
+                    sonuc = oncekiSonuc / ikinciDouble;
+                    break;
+                case '^':
+                    sonuc = Math.Pow(oncekiSonuc, ikinciDouble);
+                    break;
+            }
+        }
         private void esittir(char x)
         {
             op = x;
@@ -103,48 +145,14 @@ namespace WinFormsApp6
                 ilkDouble = Convert.ToDouble(ilkDeger);
                 ikinciDouble = Convert.ToDouble(ikinciDeger);
                 textBox1.Clear();
-                switch (x)
-                {
-                    case '+':
-                        sonuc = ilkDouble + ikinciDouble;
-                        break;
-                    case '-':
-                        sonuc = ilkDouble - ikinciDouble;
-                        break;
-                    case 'x':
-                        sonuc = ilkDouble * ikinciDouble;
-                        break;
-                    case '/':
-                        sonuc = ilkDouble / ikinciDouble;
-                        break;
-                    case '^':
-                        sonuc = Math.Pow(ilkDouble, ikinciDouble);
-                        break;
-                }
+                sec1 (x);
                 textBox1.Text = Convert.ToString(sonuc);
                 textBox3.Text = ilkDeger + " " + x + " " + ikinciDeger + " =";
                 oncekiSonuc = sonuc;
             }
             else
             {
-                switch (op)
-                {
-                    case '+':
-                        sonuc = oncekiSonuc + ikinciDouble;
-                        break;
-                    case '-':
-                        sonuc = oncekiSonuc - ikinciDouble;
-                        break;
-                    case 'x':
-                        sonuc = oncekiSonuc * ikinciDouble;
-                        break;
-                    case '/':
-                        sonuc = oncekiSonuc / ikinciDouble;
-                        break;
-                    case '^':
-                        sonuc = Math.Pow(oncekiSonuc, ikinciDouble);
-                        break;
-                }
+                sec2(x);
                 textBox1.Text = Convert.ToString(sonuc);
                 textBox3.Text = Convert.ToString(oncekiSonuc) + " " + op + " " + Convert.ToString(ikinciDeger) + " =";
                 oncekiSonuc = sonuc;
@@ -162,25 +170,7 @@ namespace WinFormsApp6
                 ilkDouble = Convert.ToDouble(ilkDeger);
                 ikinciDouble = Convert.ToDouble(ikinciDeger);
                 textBox1.Clear();
-
-                switch (x)
-                {
-                    case '+':
-                        sonuc = ilkDouble + ikinciDouble;
-                        break;
-                    case '-':
-                        sonuc = ilkDouble - ikinciDouble;
-                        break;
-                    case 'x':
-                        sonuc = ilkDouble * ikinciDouble;
-                        break;
-                    case '/':
-                        sonuc = ilkDouble / ikinciDouble;
-                        break;
-                    case '^':
-                        sonuc = Math.Pow(ilkDouble, ikinciDouble);
-                        break;
-                }
+                sec1(x);
                 textBox1.Text = Convert.ToString(sonuc);
                 textBox3.Text = sonuc + " " + x + " ";
                 oncekiSonuc = sonuc;
@@ -191,24 +181,7 @@ namespace WinFormsApp6
                 op = x;
                 ikinciDeger = textBox1.Text;
                 ikinciDouble = Convert.ToDouble(ikinciDeger);
-                switch (x)
-                {
-                    case '+':
-                        sonuc = oncekiSonuc + ikinciDouble;
-                        break;
-                    case '-':
-                        sonuc = oncekiSonuc - ikinciDouble;
-                        break;
-                    case 'x':
-                        sonuc = oncekiSonuc * ikinciDouble;
-                        break;
-                    case '/':
-                        sonuc = oncekiSonuc / ikinciDouble;
-                        break;
-                    case '^':
-                        sonuc = Math.Pow(oncekiSonuc, ikinciDouble);
-                        break;
-                }
+                sec2(x);
                 textBox1.Text = Convert.ToString(sonuc);
                 textBox3.Text = sonuc + " " + x + " ";
                 oncekiSonuc = sonuc;
@@ -376,9 +349,9 @@ namespace WinFormsApp6
         {
             if (!textBox3.Text.Contains(op))
             {
-                aritmatik('*');
+                aritmatik('x');
             }
-            else if (tussuz == false) { esittir2('*'); }
+            else if (tussuz == false) { esittir2('x'); }
 
         }
         private void bolmeTusu_Click(object sender, EventArgs e)
