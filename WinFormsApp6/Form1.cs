@@ -142,14 +142,16 @@ namespace WinFormsApp6
         private void esittir_(char x)
         {
             op = x;
-            ikinciDeger = textBox1.Text;
+            
             ilkDouble = Convert.ToDouble(ilkDeger);
-            ikinciDouble = Convert.ToDouble(ikinciDeger);
-            textBox1.Clear();
+            
+            
             if (esittir == true)
             {
                 if (ikinciIslem == false)
                 {
+                    ikinciDeger = textBox1.Text;
+                    ikinciDouble = Convert.ToDouble(ikinciDeger);
                     sec1(x);
                     textBox3.Text = ilkDeger + " " + x + " " + ikinciDeger + " =";
                     textBox1.Text = Convert.ToString(sonuc);
@@ -164,6 +166,8 @@ namespace WinFormsApp6
             }
             else
             {
+                ikinciDeger = textBox1.Text;
+                ikinciDouble = Convert.ToDouble(ikinciDeger);
                 if (ikinciIslem == false)
                 {
                     ikinciIslem = true;
